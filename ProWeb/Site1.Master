@@ -5,12 +5,27 @@
 <html>
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>HADA P3</title>
+    <style>
+        .nombre{
+            font-size: smaller;
+        }
+        .titulo{
+            background-color: cadetblue;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <h1>Jorge García de las Bayonas Cortés - 48725801W</h1>
+    <div class="nombre">
+        Jorge García de las Bayonas Cortés - 48725801W
+    </div>
+    <div class="titulo">
+        <h1>HADA P3 - CURSO 2023/2024</h1>
+    </div>
     <form id="form1" runat="server">
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
