@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Products management</h2>
     <span>Code</span>
-    <asp:TextBox ID="textCode" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="textCode" runat="server"></asp:TextBox>
     <br />
     <br />
     <span>Name</span>
@@ -39,6 +39,8 @@
     <asp:Button ID="Button_ReadFirst" runat="server" Text="Read First" />
     <asp:Button ID="Button_ReadPrev" runat="server" Text="Read Prev" />
     <asp:Button ID="Button_ReadNext" runat="server" Text="Read Next" />
+
+    <br />
     <asp:Label ID="Label_Error" runat="server" ForeColor="Red" Visible="false"></asp:Label><br />
 
 
