@@ -31,6 +31,7 @@ namespace library
             this.Name = name;
             this.Amount = amount;
             this.Price = price;
+            Category = category;
             this.CreationDate = creationDate;
         }
         public bool Create()
