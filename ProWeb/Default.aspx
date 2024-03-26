@@ -33,12 +33,12 @@
     <br />
     <br />
     <asp:Button ID="Button_Create" runat="server" Text="Create" OnClick="ButtonCreate_Click" />
-    <asp:Button ID="Button_Update" runat="server" Text="Update" />
-    <asp:Button ID="Button_Delete" runat="server" Text="Delete" />
-    <asp:Button ID="Button_Read" runat="server" Text="Read" />
-    <asp:Button ID="Button_ReadFirst" runat="server" Text="Read First" />
-    <asp:Button ID="Button_ReadPrev" runat="server" Text="Read Prev" />
-    <asp:Button ID="Button_ReadNext" runat="server" Text="Read Next" />
+    <asp:Button ID="Button_Update" runat="server" Text="Update" OnClick="ButtonUpdate_Click"/>
+    <asp:Button ID="Button_Delete" runat="server" Text="Delete" OnClick="ButtonDelete_Click"/>
+    <asp:Button ID="Button_Read" runat="server" Text="Read" OnClick="ButtonRead_Click"/>
+    <asp:Button ID="Button_ReadFirst" runat="server" Text="Read First" OnClick="ButtonReadFirst_Click"/>
+    <asp:Button ID="Button_ReadPrev" runat="server" Text="Read Prev" OnClick="ButtonReadPrev_Click"/>
+    <asp:Button ID="Button_ReadNext" runat="server" Text="Read Next" OnClick="ButtonReadNext_Click"/>
 
     <br />
     <asp:Label ID="Label_Error" runat="server" ForeColor="Red" Visible="false"></asp:Label><br />

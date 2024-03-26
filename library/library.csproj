@@ -45,11 +45,5 @@
     <Compile Include="ENProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProWeb\ProWeb.csproj">
-      <Project>{0ea203ce-ff26-4bf2-892a-58c1c8b710b0}</Project>
-      <Name>ProWeb</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
