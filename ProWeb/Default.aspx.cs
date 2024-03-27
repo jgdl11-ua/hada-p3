@@ -181,7 +181,7 @@ namespace ProWeb
             {
                 
                 ENProduct product = new ENProduct();
-                
+                product.Code = textCode.Text;
 
                 if (product.Read())
                 {

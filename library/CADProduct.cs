@@ -103,19 +103,19 @@ namespace library
                 SqlCommand command = new SqlCommand("SELECT * FROM Products WHERE code = @Code", c);
                 command.Parameters.AddWithValue("@Code", en.Code);
                 SqlDataReader reader = command.ExecuteReader();
+
                 if (reader.Read())
                 {
+                    en.Code = reader["code"].ToString();
                     en.Name = reader["name"].ToString();
                     en.Amount = (int)reader["amount"];
-                    en.Price = (float)reader["price"];
+                    en.Price = float.Parse(reader["price"].ToString());
                     en.Category = (int)reader["category"];
                     en.CreationDate = (DateTime)reader["creationDate"];
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
+
+                return false;
             }
             catch (SqlException ex)
             {
