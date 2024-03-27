@@ -16,12 +16,12 @@
     <br />
     <br />
     <span>Category </span>
-    <select>
-        <option value=0>Computing</option>
-        <option value=1>Telephony</option>
-        <option value=2>Gaming</option>
-        <option value=3>Home appliances</option>
-    </select>
+    <asp:DropDownList ID="ddlCategory" runat="server">
+        <asp:ListItem Text="Computing" Value="0"></asp:ListItem>
+        <asp:ListItem Text="Telephony" Value="1"></asp:ListItem>
+        <asp:ListItem Text="Gaming" Value="2"></asp:ListItem>
+        <asp:ListItem Text="Home Appliances" Value="3"></asp:ListItem>
+    </asp:DropDownList>
     <br />
     <br />
     <span>Price </span>
@@ -42,8 +42,4 @@
     <asp:Button ID="Button_ReadNext" runat="server" Text="Read Next" OnClick="ButtonReadNext_Click"/>
 
     <br />
-   
-
-
-
 </asp:Content>

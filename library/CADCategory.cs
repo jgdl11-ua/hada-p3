@@ -9,18 +9,18 @@ namespace library
 {
     public class CADCategory
     {
-        private string _connectionString;
+        private string connectionString;
 
         public CADCategory()
         {
-            _connectionString = "data source=(LocalDB)\\MSSQLLocalDB;IntegratedSecurity=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf";
+            connectionString = "data source=(LocalDB)\\MSSQLLocalDB;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf";
         }
 
         public List<ENCategory> ReadAll()
         {
             List<ENCategory> categories = new List<ENCategory>();
 
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT * FROM Categories";
                 SqlCommand command = new SqlCommand(query, connection);

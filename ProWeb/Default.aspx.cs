@@ -66,6 +66,36 @@ namespace ProWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                try
+                {
+                    LoadCategoriesDropDownList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al cargar las categorías: {0}", ex.Message);
+                }
+            }
+        }
+
+        private void LoadCategoriesDropDownList()
+        {
+            ddlCategory.Items.Clear();
+            try
+            {   
+                CADCategory cadCategory = new CADCategory();
+                List<ENCategory> categories = cadCategory.ReadAll();
+
+                foreach (ENCategory category in categories)
+                {
+                    ddlCategory.Items.Add(new ListItem(category.Name, category.Id.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener las categorías: {0}", ex.Message);
+            }
         }
 
         protected void ButtonCreate_Click(object sender, EventArgs e)
@@ -82,7 +112,8 @@ namespace ProWeb
                 product.Code = textCode.Text;
                 product.Name = textName.Text;
                 product.Amount = int.Parse(textAmount.Text);
-                product.Category = 1;
+                int categoryId = int.Parse(ddlCategory.SelectedValue);
+                product.Category = categoryId;
                 float price = float.Parse(textPrice.Text);
                 product.Price = (float)Math.Round(price, 2);
                 product.CreationDate = DateTime.ParseExact(textDate.Text, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
@@ -120,6 +151,8 @@ namespace ProWeb
                 product.Amount = int.Parse(textAmount.Text);
                 float price = float.Parse(textPrice.Text);
                 product.Price = (float)Math.Round(price, 2);
+                int categoryId = int.Parse(ddlCategory.SelectedValue);
+                product.Category = categoryId;
                 product.CreationDate = DateTime.ParseExact(textDate.Text, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
                 bool isValidSQL = product.Update();
@@ -155,6 +188,8 @@ namespace ProWeb
                 product.Amount = int.Parse(textAmount.Text);
                 float price = float.Parse(textPrice.Text);
                 product.Price = (float)Math.Round(price, 2);
+                int categoryId = int.Parse(ddlCategory.SelectedValue);
+                product.Category = categoryId;
                 product.CreationDate = DateTime.ParseExact(textDate.Text, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
                 bool isValidSQL = product.Delete();
@@ -189,6 +224,7 @@ namespace ProWeb
                     textAmount.Text = product.Amount.ToString();
                     textPrice.Text = product.Price.ToString();
                     textDate.Text = product.CreationDate.ToString();
+                    ddlCategory.Text = product.Category.ToString();
 
                     Label_Error.Text = "Producto leído";
                     Label_Error.Visible = true;
@@ -212,6 +248,7 @@ namespace ProWeb
                 textCode.Text = product.Code;
                 textName.Text  = product.Name;
                 textAmount.Text  = product.Amount.ToString();
+                ddlCategory.Text = product.Category.ToString();
                 textPrice.Text = product.Price.ToString();
                 textDate.Text = product.CreationDate.ToString();
             }
@@ -232,6 +269,8 @@ namespace ProWeb
                 product.Amount = int.Parse(textAmount.Text);
                 float price = float.Parse(textPrice.Text);
                 product.Price = (float)Math.Round(price, 2);
+                int categoryId = int.Parse(ddlCategory.SelectedValue);
+                product.Category = categoryId;
                 product.CreationDate = DateTime.ParseExact(textDate.Text, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
                 if (product.ReadPrev())
@@ -240,6 +279,7 @@ namespace ProWeb
                     textName.Text = product.Name;
                     textAmount.Text = product.Amount.ToString();
                     textPrice.Text = product.Price.ToString();
+                    ddlCategory.Text = product.Category.ToString();
                     textDate.Text = product.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 else
@@ -273,6 +313,7 @@ namespace ProWeb
                     textCode.Text = product.Code;
                     textName.Text = product.Name;
                     textAmount.Text = product.Amount.ToString();
+                    ddlCategory.Text = product.Category.ToString();
                     textPrice.Text = product.Price.ToString();
                     textDate.Text = product.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
 
