@@ -68,22 +68,8 @@ namespace ProWeb
         {
             if (!IsPostBack)
             {
-                try
-                {
-                    LoadCategoriesDropDownList();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al cargar las categorías: {0}", ex.Message);
-                }
-            }
-        }
+                ddlCategory.Items.Clear();
 
-        private void LoadCategoriesDropDownList()
-        {
-            ddlCategory.Items.Clear();
-            try
-            {   
                 CADCategory cadCategory = new CADCategory();
                 List<ENCategory> categories = cadCategory.ReadAll();
 
@@ -91,10 +77,7 @@ namespace ProWeb
                 {
                     ddlCategory.Items.Add(new ListItem(category.Name, category.Id.ToString()));
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al obtener las categorías: {0}", ex.Message);
+            
             }
         }
 
