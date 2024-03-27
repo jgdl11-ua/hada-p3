@@ -60,6 +60,15 @@ namespace ProWeb
         protected global::System.Web.UI.WebControls.TextBox textDate;
 
         /// <summary>
+        /// Control Label_Error.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Error;
+
+        /// <summary>
         /// Control Button_Create.
         /// </summary>
         /// <remarks>
@@ -121,14 +130,5 @@ namespace ProWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_ReadNext;
-
-        /// <summary>
-        /// Control Label_Error.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Error;
     }
 }

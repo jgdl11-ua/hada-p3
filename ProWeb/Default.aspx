@@ -7,15 +7,15 @@
     <asp:TextBox ID="textCode" runat="server"></asp:TextBox>
     <br />
     <br />
-    <span>Name</span>
+    <span>Name </span>
     <asp:TextBox ID="textName" runat="server"></asp:TextBox>
     <br />
     <br />
-    <span>Amount</span>
+    <span>Amount </span>
     <asp:TextBox ID="textAmount" runat="server"></asp:TextBox>
     <br />
     <br />
-    <span>Category</span>
+    <span>Category </span>
     <select>
         <option value=0>Computing</option>
         <option value=1>Telephony</option>
@@ -24,13 +24,14 @@
     </select>
     <br />
     <br />
-    <span>Price</span>
+    <span>Price </span>
     <asp:TextBox ID="textPrice" runat="server"></asp:TextBox>
     <br />
     <br />
-    <span>Creation Date</span>
+    <span>Creation Date </span>
     <asp:TextBox ID="textDate" runat="server"></asp:TextBox>
     <br />
+    <asp:Label ID="Label_Error" runat="server" ForeColor="Red" Visible="false"></asp:Label><br />
     <br />
     <asp:Button ID="Button_Create" runat="server" Text="Create" OnClick="ButtonCreate_Click" />
     <asp:Button ID="Button_Update" runat="server" Text="Update" OnClick="ButtonUpdate_Click"/>
@@ -41,7 +42,7 @@
     <asp:Button ID="Button_ReadNext" runat="server" Text="Read Next" OnClick="ButtonReadNext_Click"/>
 
     <br />
-    <asp:Label ID="Label_Error" runat="server" ForeColor="Red" Visible="false"></asp:Label><br />
+   
 
 
 

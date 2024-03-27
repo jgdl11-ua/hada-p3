@@ -47,7 +47,7 @@ namespace ProWeb
                     return false;
                 }
 
-                if (!float.TryParse(textPrice.Text, out float price1) || price1 < 0 || price1 > 9999.99)
+                if (!float.TryParse(textPrice.Text, out float price1) || price1 < 0 || price1 > 9999.99f)
                 {
                     Label_Error.Text = "El precio debe estar entre 0 y 9999.99";
                     Label_Error.Visible = true;
@@ -66,7 +66,6 @@ namespace ProWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label_Error.Text = "";
         }
 
         protected void ButtonCreate_Click(object sender, EventArgs e)
@@ -77,11 +76,13 @@ namespace ProWeb
                 {
                     return;
                 }
+
                 //si es correcto
                 ENProduct product = new ENProduct();
                 product.Code = textCode.Text;
                 product.Name = textName.Text;
                 product.Amount = int.Parse(textAmount.Text);
+                product.Category = 1;
                 float price = float.Parse(textPrice.Text);
                 product.Price = (float)Math.Round(price, 2);
                 product.CreationDate = DateTime.ParseExact(textDate.Text, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
@@ -211,12 +212,11 @@ namespace ProWeb
             ENProduct product = new ENProduct();
             if (product.ReadFirst()) 
             {
-                product.Code = textCode.Text;
-                product.Name = textName.Text;
-                product.Amount = int.Parse(textAmount.Text);
-                float price = float.Parse(textPrice.Text);
-                product.Price = (float)Math.Round(price, 2);
-                product.CreationDate = DateTime.ParseExact(textDate.Text, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                textCode.Text = product.Code;
+                textName.Text  = product.Name;
+                textAmount.Text  = product.Amount.ToString();
+                textPrice.Text = product.Price.ToString();
+                textDate.Text = product.CreationDate.ToString();
             }
             else
             {
@@ -228,10 +228,6 @@ namespace ProWeb
         {
             try
             {
-                if (!isValid())
-                {
-                    return;
-                }
 
                 ENProduct product = new ENProduct();
                 product.Code = textCode.Text;
@@ -264,20 +260,18 @@ namespace ProWeb
         {
             try
             {
-                if (!isValid())
-                {
-                    return;
-                }
 
                 ENProduct product = new ENProduct();
                 product.Code = textCode.Text;
+                /*
                 product.Name = textName.Text;
                 product.Amount = int.Parse(textAmount.Text);
+
                 float price = float.Parse(textPrice.Text);
                 product.Price = (float)Math.Round(price, 2);
                 product.CreationDate = DateTime.ParseExact(textDate.Text, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-
-                if (product.ReadPrev())
+                */
+                if (product.ReadNext())
                 {
                     textCode.Text = product.Code;
                     textName.Text = product.Name;

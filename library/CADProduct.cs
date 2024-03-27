@@ -16,7 +16,7 @@ namespace library
 
         public CADProduct()
         {
-            constring = "data source=(LocalDB)\\MSSQLLocalDB;IntegratedSecurity=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf";
+            constring = "data source=(LocalDB)\\MSSQLLocalDB;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf";
         }
 
         public bool Create(ENProduct en)
@@ -26,7 +26,7 @@ namespace library
             {
                 c.Open();
                 SqlCommand command = new SqlCommand("INSERT INTO Products (code,name,amount,price,category,creationDate) " +
-                    "VALUES (@Code, @Name, @Amount, @Price, @Categpry, @CreationDate)", c);
+                    "VALUES (@Code, @Name, @Amount, @Price, @Category, @CreationDate)", c);
                 command.Parameters.AddWithValue("@Code", en.Code);
                 command.Parameters.AddWithValue("@Name", en.Name);
                 command.Parameters.AddWithValue("@Amount", en.Amount);
@@ -140,7 +140,7 @@ namespace library
                     en.Code = reader["code"].ToString();
                     en.Name = reader["name"].ToString();
                     en.Amount = (int)reader["amount"];
-                    en.Price = (float)reader["price"];
+                    en.Price = float.Parse(reader["price"].ToString());
                     en.Category = (int)reader["category"];
                     en.CreationDate = (DateTime)reader["creationDate"];
                     return true;
@@ -167,22 +167,23 @@ namespace library
             try
             {
                 c.Open();
-                SqlCommand command = new SqlCommand("SELECT TOP 1 * FROM Products WHERE code > @Code ORDER BY code ASC", c);
+                SqlCommand command = new SqlCommand("SELECT * FROM Products ORDER BY code ASC", c);
                 SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    en.Code = reader["code"].ToString();
-                    en.Name = reader["name"].ToString();
-                    en.Amount = (int)reader["amount"];
-                    en.Price = (float)reader["price"];
-                    en.Category = (int)reader["category"];
-                    en.CreationDate = (DateTime)reader["creationDate"];
-                    return true;
+                    if (reader["code"].ToString() == en.Code && reader.Read())
+                    {
+                        en.Code = reader["code"].ToString();
+                        en.Name = reader["name"].ToString();
+                        en.Amount = (int)reader["amount"];
+                        en.Price = float.Parse(reader["price"].ToString());
+                        en.Category = (int)reader["category"];
+                        en.CreationDate = (DateTime)reader["creationDate"];
+                        return true;
+                    }
                 }
-                else
-                {
-                    return false;
-                }
+
+                return false;
             }
             catch (SqlException ex)
             {
@@ -200,22 +201,23 @@ namespace library
             try
             {
                 c.Open();
-                SqlCommand command = new SqlCommand("SELECT TOP 1 * FROM Products WHERE code > @Code ORDER BY code DESC", c);
+                SqlCommand command = new SqlCommand("SELECT * FROM Products ORDER BY code DESC", c);
                 SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    en.Code = reader["code"].ToString();
-                    en.Name = reader["name"].ToString();
-                    en.Amount = (int)reader["amount"];
-                    en.Price = (float)reader["price"];
-                    en.Category = (int)reader["category"];
-                    en.CreationDate = (DateTime)reader["creationDate"];
-                    return true;
+                    if (reader["code"].ToString() == en.Code && reader.Read())
+                    {
+                        en.Code = reader["code"].ToString();
+                        en.Name = reader["name"].ToString();
+                        en.Amount = (int)reader["amount"];
+                        en.Price = float.Parse(reader["price"].ToString());
+                        en.Category = (int)reader["category"];
+                        en.CreationDate = (DateTime)reader["creationDate"];
+                        return true;
+                    }
                 }
-                else
-                {
-                    return false;
-                }
+
+                return false;
             }
             catch (SqlException ex)
             {
