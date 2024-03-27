@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,18 +11,40 @@ namespace library
 {
     public class CADCategory
     {
-        private string connectionString;
+        private string constring;
 
         public CADCategory()
         {
-            connectionString = "data source=(LocalDB)\\MSSQLLocalDB;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf";
+            constring = ConfigurationManager.ConnectionStrings["Database"].ToString();
+        }
+
+        public bool Read(ENProduct en)
+        {
+            SqlConnection c = new SqlConnection(constring);
+            try
+            {
+                c.Open();
+                string query = "SELECT code, name, price, amount FROM Products WHERE code = @Code";
+                SqlCommand command = new SqlCommand(query, c);
+
+                command.Parameters.AddWithValue("@Code", en.Code);
+
+                SqlDataReader reader = command.ExecuteReader();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al crear el producto: " + ex.Message);
+                return false;
+            }
+            finally { c.Close(); }
         }
 
         public List<ENCategory> ReadAll()
         {
             List<ENCategory> categories = new List<ENCategory>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(constring))
             {
                 string query = "SELECT * FROM Categories";
                 SqlCommand command = new SqlCommand(query, connection);

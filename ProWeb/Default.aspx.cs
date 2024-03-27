@@ -13,7 +13,7 @@ using library;
 
 namespace ProWeb
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class Default : System.Web.UI.Page
     {
         private bool isValid()
         {
@@ -206,7 +206,7 @@ namespace ProWeb
                     textName.Text = product.Name;
                     textAmount.Text = product.Amount.ToString();
                     textPrice.Text = product.Price.ToString();
-                    textDate.Text = product.CreationDate.ToString();
+                    textDate.Text = product.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
                     ddlCategory.Text = product.Category.ToString();
 
                     Label_Error.Text = "Producto leído";
@@ -233,7 +233,7 @@ namespace ProWeb
                 textAmount.Text  = product.Amount.ToString();
                 ddlCategory.Text = product.Category.ToString();
                 textPrice.Text = product.Price.ToString();
-                textDate.Text = product.CreationDate.ToString();
+                textDate.Text = product.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
             }
             else
             {

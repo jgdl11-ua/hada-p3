@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace library
 
         public CADProduct()
         {
-            constring = "data source=(LocalDB)\\MSSQLLocalDB;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf";
+            constring = ConfigurationManager.ConnectionStrings["Database"].ToString();
         }
 
         public bool Create(ENProduct en)
