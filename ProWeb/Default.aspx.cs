@@ -179,19 +179,16 @@ namespace ProWeb
         {
             try
             {
-                if (!isValid())
-                {
-                    return;
-                }
+                
                 ENProduct product = new ENProduct();
-                product.Code = textCode.Text;
+                
 
                 if (product.Read())
                 {
                     textName.Text = product.Name;
                     textAmount.Text = product.Amount.ToString();
                     textPrice.Text = product.Price.ToString();
-                    textDate.Text = product.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
+                    textDate.Text = product.CreationDate.ToString();
 
                     Label_Error.Text = "Producto leído";
                     Label_Error.Visible = true;
