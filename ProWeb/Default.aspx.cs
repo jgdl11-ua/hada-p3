@@ -96,7 +96,7 @@ namespace ProWeb
                 product.Name = textName.Text;
                 product.Amount = int.Parse(textAmount.Text);
                 int categoryId = int.Parse(ddlCategory.SelectedValue);
-                product.Category = categoryId;
+                product.Category = categoryId;//categoryId;
                 float price = float.Parse(textPrice.Text);
                 product.Price = (float)Math.Round(price, 2);
                 product.CreationDate = DateTime.ParseExact(textDate.Text, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);

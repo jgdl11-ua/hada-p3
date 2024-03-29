@@ -43,6 +43,7 @@ namespace library
         public List<ENCategory> ReadAll()
         {
             List<ENCategory> categories = new List<ENCategory>();
+            
 
             using (SqlConnection connection = new SqlConnection(constring))
             {
@@ -65,9 +66,28 @@ namespace library
                 {
                     Console.WriteLine("Error en la operación de lectura de categorías: {0}", ex.Message);
                 }
+
+                List<ENCategory> predefinedCategories = GetPredefinedCategories();
+                foreach (ENCategory predefinedCategory in predefinedCategories)
+                {
+                    if (!categories.Any(c => c.Name == predefinedCategory.Name))
+                    {
+                        categories.Add(predefinedCategory);
+                    }
+                }
             }
 
             return categories;
+        }
+        private List<ENCategory> GetPredefinedCategories()
+        {
+            return new List<ENCategory>
+            {
+                new ENCategory(0, "Computing"),
+                new ENCategory(1, "Telephony"),
+                new ENCategory(2, "Gaming"),
+                new ENCategory(3, "Home appliances")
+            };
         }
     }
 }
