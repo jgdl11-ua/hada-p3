@@ -16,13 +16,7 @@
     <br />
     <br />
     <span>Category </span>
-    <asp:DropDownList ID="ddlCategory" runat="server">
-        <asp:ListItem Text="Computing" Value="0"></asp:ListItem>
-        <asp:ListItem Text="Telephony" Value="1"></asp:ListItem>
-        <asp:ListItem Text="Gaming" Value="2"></asp:ListItem>
-        <asp:ListItem Text="Home Appliances" Value="3"></asp:ListItem>
-    </asp:DropDownList>
-    <br />
+    <asp:DropDownList ID="ddlCategory" runat="server"></asp:DropDownList>
     <br />
     <span>Price </span>
     <asp:TextBox ID="textPrice" runat="server"></asp:TextBox>
