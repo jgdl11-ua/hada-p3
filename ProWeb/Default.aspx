@@ -18,6 +18,7 @@
     <span>Category </span>
     <asp:DropDownList ID="ddlCategory" runat="server"></asp:DropDownList>
     <br />
+    <br />
     <span>Price </span>
     <asp:TextBox ID="textPrice" runat="server"></asp:TextBox>
     <br />
